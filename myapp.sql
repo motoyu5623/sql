@@ -1,12 +1,19 @@
 drop table if exists users;
 create table users (
-	id int unsigned,
-	name varchar(20),
-	score float not null
+	id int unsigned primary key auto_increment,
+	name varchar(20) unique,
+	score float default 0.0
 );
+alter table users add column email VARCHAR(255) after name;
+alter table users drop column score; 
+alter table users change name user_name varchar(80) default 'nobody';
 
-insert into users (id, name, score) values 
-	(1, 'taguchi', 5,8);
-	(2, 'fkoji', 8,2);
-	(3, 'dotinstall', 6.1);
-	(4, 'yamada', null);
+desc users;
+
+
+-- insert into users (name, score) values ('taguchi', 5.8);
+-- insert into users (name, score) values ('fkoji', 8.2);
+-- insert into users (name, score) values ('dotinstall', 6.1);
+-- insert into users (name) values ('yamada');
+
+-- select * from users;
